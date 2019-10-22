@@ -1,0 +1,79 @@
+.signin-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.signin-image {
+    width: 50%;
+    height: 100vh;
+}
+
+.signin-div {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-holder {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.welcome-text {
+    color: #00BE88;
+    width: 122px;
+    height: 19px;
+    font-size: 16px;
+    font-weight: 400px;
+}
+
+.signin-header {
+    width: 211px;
+    height: 28px;
+    font-size: 32px;
+    color: black;
+    font-weight: bold;
+}
+
+.signin-form {
+    color: #777289;
+    font-size: 14px;
+    font-weight: 400px;
+}
+
+.form-div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.form-group {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 20px 8px;
+}
+
+label {
+    padding: 5px 0;
+}
+
+input[type='text'],
+input[type='password'] {
+    padding: 8px 20px;
+    min-height: 25px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    background: #FFF;
+}
+
+button {
+    background: #00BE88;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    min-width: 100px;
+}

@@ -1,0 +1,276 @@
+        .container {
+            padding: 30px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .justify-content-center {
+            justify-content: center;
+        }
+        
+        .align-items-center {
+            align-items: center;
+        }
+        
+        .justify-content-space-between {
+            justify-content: space-between;
+        }
+        
+        .wrap {
+            flex-wrap: wrap;
+        }
+        
+        .nowrap {
+            flex-wrap: nowrap;
+        }
+        
+        .header-1 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .col-1 {
+            width: 20%;
+        }
+        
+        .col-3 {
+            width: 60%;
+        }
+        
+        .col-5 {
+            width: 100%;
+        }
+        
+        .card {
+            border-radius: 10px;
+            margin: 7px 20px;
+            background: #FFFFFF;
+        }
+        
+        .left-aside {
+            width: 354px;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .device-in-use {
+            background: #FFFFFF;
+            width: 274px;
+            margin: 5px 20px;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .btn-hollow {
+            padding: 5px 15px;
+            display: inline-block;
+            border: 1px solid #CCC;
+            border-radius: 20px;
+            margin: 10px auto;
+        }
+        
+        .device-in-use-ol {
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .device-in-use-ol li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        .border-bottom {
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        .device-in-use-ol li:nth-child(even) {
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        .tagname {
+            color: rgb(145, 145, 145);
+        }
+        
+        .text-45 {
+            font-size: 45px;
+            line-height: 46px;
+        }
+        
+        .strong {
+            font-weight: bold;
+            color: black;
+        }
+        
+        .pad-15 {
+            padding: 15px;
+        }
+        
+        .pad-lr-15 {
+            padding: 0 15px;
+        }
+        
+        .urgent-card {
+            width: 135px;
+            height: 244px;
+            background: #FE454F;
+            overflow: hidden;
+            color: #FFFFFF;
+            font-size: 16px;
+        }
+        
+        .non-urgent-card {
+            width: 135px;
+            height: 244px;
+            background: #FFFFFF;
+            overflow: hidden;
+            color: #000000;
+            font-size: 16px;
+        }
+        
+        .urgent-card span.addmargin {
+            margin: 20px 0;
+        }
+        
+        .small-text {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 7px;
+            margin-bottom: 15px;
+        }
+        
+        .operation-no {
+            color: #FFFFFF;
+            font-size: 42px;
+            text-align: center;
+            font-weight: bold;
+            width: 74px;
+            height: 74px;
+            border-radius: 37px;
+            background: #D83B44;
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .operation-notification {
+            display: flex;
+            position: absolute;
+            right: 6px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: #FFFFFF;
+        }
+        
+        .card-view-small {
+            height: 114px;
+            width: 135px;
+            border: 1px solid #CCC;
+        }
+        
+        .small-icon {
+            width: 12px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        table {
+            width: 724px;
+            table-layout: fixed;
+        }
+        
+        .tbl-content-table {
+            width: 801px;
+            height: 257px;
+            table-layout: fixed;
+            background-color: #FFFFFF;
+            border-radius: 12px 12px 12px 12px;
+        }
+        
+        .tbl-header {
+            background-color: #F8F9F9;
+            color: #777289;
+        }
+        
+        .tbl-content {
+            height: 300px;
+            overflow-x: hidden;
+            margin-top: 0px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #777289;
+        }
+        
+        th {
+            padding: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            color: #777289;
+            text-transform: uppercase;
+            border-bottom: 1px solid #CCC;
+        }
+        
+        .tbl-data {
+            font-weight: bold;
+            text-align: left;
+            padding: 10px;
+        }
+        
+        .tbl-data span {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        td {
+            padding: 15px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 14px;
+            color: #777289;
+            border-bottom: solid 1px #CCC;
+        }
+        
+        .table-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 14px;
+            background-color: #D8E1FF;
+            margin-left: 4px;
+        }
+        
+        .red-timeline {
+            width: 117px;
+            height: 8px;
+            background-color: #FE454F;
+            border-radius: 4px;
+        }
+        
+        .green-timeline {
+            width: 117px;
+            height: 8px;
+            background-color: #0FBB83;
+            border-radius: 4px;
+        }
+        /* demo styles */
+        
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+        .active-infusion {
+            border-radius: 15px;
+            margin: 20px 0;
+        }

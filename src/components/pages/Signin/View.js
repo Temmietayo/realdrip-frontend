@@ -21,7 +21,7 @@ const View = props => {
             <BigAlert message={props.loggingUserError ? 'Username or Password incorrect' : null} />
             <form className="sign-form" onSubmit={props.handleSubmit}>
               <div className="form-div">
-                <div className="form-group">
+                <div className="form-group"> 
                   <label htmlFor="wardusername">Ward Username</label>
                   <input
                     type="text"

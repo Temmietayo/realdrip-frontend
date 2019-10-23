@@ -1,3 +1,7 @@
 // Asynchronous Processes
 
 export const LOGGING_USER = "LOGGING_USER";
+
+export const FETCHING_DASHBOARDS = 'FETCHING_DASHBOARDS';
+export const UPDATING_DASHBOARD = 'UPDATING_DASHBOARD';
+

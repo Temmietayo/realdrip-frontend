@@ -1,4 +1,4 @@
-        .container {
+        .container-dash {
             padding: 30px;
         }
         
@@ -7,12 +7,12 @@
             padding: 0;
         }
         
-        .row {
+        .row-dash {
             display: flex;
             flex-direction: row;
         }
         
-        .column {
+        .column-dash {
             display: flex;
             flex-direction: column;
         }
@@ -37,20 +37,20 @@
             flex-wrap: nowrap;
         }
         
-        .header-1 {
+        .header-1-dash {
             font-size: 25px;
             font-weight: bold;
         }
         
-        .col-1 {
+        .col-1-dash {
             width: 20%;
         }
         
-        .col-3 {
+        .col-3-dash {
             width: 60%;
         }
         
-        .col-5 {
+        .col-5-dash {
             width: 100%;
         }
         
@@ -60,7 +60,7 @@
             background: #FFFFFF;
         }
         
-        .left-aside {
+        .left-aside-dash {
             width: 354px;
             padding: 20px;
             overflow: hidden;

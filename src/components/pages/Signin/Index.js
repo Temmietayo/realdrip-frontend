@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
 import { stopAsyncProcess } from "../../../actions/commonActions";
 import * as asyncProcess from "../../../actions/asyncProcess";
-import { validateSigninInputs } from "../../helpers/inputValidators";
+import { validateSigninInputs } from "../../../helpers/inputValidators";
 import View from "./View";
 
-@connect(store => ({
-  loggingUserStarted: store.authReducers.loggingUserStarted,
-  loggingUserResolved: store.authReducers.loggingUserResolved,
-  loggingUserError: store.authReducers.loggingUserError
-}))
+// connect(store => ({
+  
+// }))
+
 class Signin extends Component {
   constructor() {
     super();
@@ -72,13 +72,15 @@ class Signin extends Component {
       return "Successful";
     }
     return (
-      <View
-        loggingUserStarted={this.props.loggingUserStarted}
-        loggingUserError={this.props.loggingUserError}
-        inputErrors={this.state.inputErrors}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <View
+          loggingUserStarted={this.props.loggingUserStarted}
+          loggingUserError={this.props.loggingUserError}
+          inputErrors={this.state.inputErrors}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          />
+      </div>
     );
   }
 }
@@ -97,4 +99,9 @@ Signin.propTypes = {
   dispatch: PropTypes.func
 };
 
-export default Signin;
+export default withRouter(
+  connect(state => ({
+      users: state.users,
+      sessions: state.sessions
+  }))(Signin)
+);

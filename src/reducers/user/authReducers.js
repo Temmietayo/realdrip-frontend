@@ -27,7 +27,6 @@ export default (state = initialState, action) => {
         loggingUserError: null,
       };
     }
-
     case actionTypes.LOGGING_USER_REJECTED: {
       const { message } = action.payload; // Error message.
       return {
@@ -36,7 +35,7 @@ export default (state = initialState, action) => {
         loggingUserResolved: false,
         loggingUserError: message,
       };
-
+    }
     case actionTypes.LOG_OUT: {
       return {
         user: null,
@@ -52,5 +51,7 @@ export default (state = initialState, action) => {
         loggingUserError: null,
       };
     }
+    default:
+      return state;
   }
 };

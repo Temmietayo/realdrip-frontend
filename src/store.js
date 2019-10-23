@@ -1,12 +1,25 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, compose } from "redux";
 import thunk from "redux-thunk";
+import { combineReducers } from 'redux';
 
-import reducer from "./reducers";
+import reducers from "./reducers/user";
 
 let middlewares = [thunk];
-
 const middleware = applyMiddleware(...middlewares);
 
-const store = createStore(reducer, middleware);
+// const store = createStore(reducer, null, middleware);
 
-export default store;
+
+// const middleware = [thunkMiddleware, logger];
+export default function configureStore(initialState = {}) {
+  const rootReducer = combineReducers({
+    ...reducers
+  });
+  const enhancer = compose(
+      middleware,
+    // window.devToolsExtension ? window.devToolsExtension() : f => f
+  );
+  return createStore(rootReducer, initialState, enhancer);
+}
+
+

@@ -1,25 +1,24 @@
 import { applyMiddleware, createStore, compose } from "redux";
 import thunk from "redux-thunk";
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 import reducers from "./reducers/user";
+import {
+  fetchDeviceReducer,
+  fetchInfusionReducer,
+  fetchNursesReducer
+} from "./reducers/dashboard";
 
 let middlewares = [thunk];
 const middleware = applyMiddleware(...middlewares);
 
-// const store = createStore(reducer, null, middleware);
-
-
-// const middleware = [thunkMiddleware, logger];
 export default function configureStore(initialState = {}) {
   const rootReducer = combineReducers({
-    ...reducers
+    ...reducers,
+    fetchDeviceReducer,
+    fetchInfusionReducer,
+    fetchNursesReducer
   });
-  const enhancer = compose(
-      middleware,
-    // window.devToolsExtension ? window.devToolsExtension() : f => f
-  );
+  const enhancer = compose(middleware);
   return createStore(rootReducer, initialState, enhancer);
 }
-
-

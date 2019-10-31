@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
-import {
-  fetchDeviceReducer,
-  fetchInfusionReducer,
-  fetchNursesReducer
-} from "./dashboard/index";
 import authReducers from "./user/index";
+import dashboardReducer from "./dashboard/index";
+import infusionReducer from "./infusion/index";
+import nursesReducer from "./nurse/index";
+import deviceReducer from "./device/index";
 
 export default combineReducers({
   authReducers,
-  fetchDeviceReducer,
-  fetchInfusionReducer,
-  fetchNursesReducer
+  deviceReducer,
+  infusionReducer,
+  nursesReducer,
+  dashboardReducer
 });

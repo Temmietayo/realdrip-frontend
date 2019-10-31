@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
 import { stopAsyncProcess } from "../../../actions/commonActions";
@@ -9,7 +9,7 @@ import { validateSigninInputs } from "../../../helpers/inputValidators";
 import View from "./View";
 
 // connect(store => ({
-  
+
 // }))
 
 class Signin extends Component {
@@ -69,18 +69,16 @@ class Signin extends Component {
 
   render() {
     if (this.props.loggingUserResolved) {
-      return "Successful";
+      return <Redirect to="/dashboard" />;
     }
     return (
-      <div>
-        <View
-          loggingUserStarted={this.props.loggingUserStarted}
-          loggingUserError={this.props.loggingUserError}
-          inputErrors={this.state.inputErrors}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          />
-      </div>
+      <View
+        loggingUserStarted={this.props.loggingUserStarted}
+        loggingUserError={this.props.loggingUserError}
+        inputErrors={this.state.inputErrors}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }
@@ -95,13 +93,15 @@ Signin.defaultProps = {
 Signin.propTypes = {
   loggingUserStarted: PropTypes.bool,
   loggingUserResolved: PropTypes.bool,
-  loggingUserError: PropTypes.string,
-  dispatch: PropTypes.func
+  loggingUserError: PropTypes.shape({
+    message: PropTypes.string
+  }),
+  dispatch: PropTypes.func.isRequired
 };
 
 export default withRouter(
   connect(state => ({
-      users: state.users,
-      sessions: state.sessions
+    users: state.users,
+    sessions: state.sessions
   }))(Signin)
 );

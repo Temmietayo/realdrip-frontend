@@ -1,39 +1,40 @@
-import * as actionTypes from '../../actions/actionTypes';
+import * as actionTypes from "../../actions/actionTypes";
 
 const initialState = {
-  apiBaseUrl: null,
+  nurseData: {},
+  activeNurses: [],
   fetchingNursesStarted: false,
   fetchingNursesResolved: false,
-  fetchingNursesError: null,
+  fetchingNursesError: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCHING_ACTIVE_NURSES_STARTED: {
+    case actionTypes.FETCHING_NURSES_STARTED: {
       return {
         ...state,
         fetchingNursesStarted: true,
         fetchingNursesResolved: false,
-        fetchingNursesError: null,
+        fetchingNursesError: null
       };
     }
-    case actionTypes.FETCHING_ACTIVE_NURSES_RESOLVED: {
-      const { url } = action.payload;
+    case actionTypes.FETCHING_NURSES_RESOLVED: {
+      const { data } = action.payload;
       return {
         ...state,
-        apiBaseUrl = url,
+        nurseData: { data },
         fetchingNursesStarted: false,
         fetchingNursesResolved: true,
-        fetchingNursesError: null,
+        fetchingNursesError: null
       };
     }
-    case actionTypes.FETCHING_ACTIVE_NURSES_REJECTED: {
+    case actionTypes.FETCHING_NURSES_REJECTED: {
       const { message } = action.payload; // Error message.
       return {
         ...state,
         fetchingNursesStarted: false,
         fetchingNursesResolved: false,
-        fetchingNursesError: message,
+        fetchingNursesError: message
       };
     }
     case actionTypes.STOP_ASYNC_FETCHING_NURSES: {
@@ -41,7 +42,7 @@ export default (state = initialState, action) => {
         ...state,
         fetchingNursesStarted: false,
         fetchingNursesResolved: false,
-        fetchingNursesError: null,
+        fetchingNursesError: null
       };
     }
     default: {

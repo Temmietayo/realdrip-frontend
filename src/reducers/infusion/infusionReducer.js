@@ -1,39 +1,52 @@
-import * as actionTypes from '../../actions/actionTypes';
+import * as actionTypes from "../../actions/actionTypes";
 
 const initialState = {
-  apiBaseUrl: null,
+  InfusionData: null,
+  activeInfusion: null,
   fetchingInfusionStarted: false,
   fetchingInfusionResolved: false,
-  fetchingInfusionError: null,
+  fetchingInfusionError: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCHING_ACTIVE_INFUSION_STARTED: {
+    case actionTypes.FETCHING_INFUSION_STARTED: {
       return {
         ...state,
+        InfusionData: {},
+        activeInfusion: [],
         fetchingInfusionStarted: true,
         fetchingInfusionResolved: false,
-        fetchingInfusionError: null,
+        fetchingInfusionError: null
       };
     }
-    case actionTypes.FETCHING_ACTIVE_INFUSION_RESOLVED: {
-      const { url } = action.payload;
+    case actionTypes.FETCHING_INFUSION_RESOLVED: {
+      const { data } = action.payload;
       return {
         ...state,
-        apiBaseUrl = url,
+        InfusionData: { data },
         fetchingInfusionStarted: false,
         fetchingInfusionResolved: true,
-        fetchingInfusionError: null,
+        fetchingInfusionError: null
       };
     }
-    case actionTypes.FETCHING_ACTIVE_INFUSION_REJECTED: {
+    case actionTypes.UPDATE_ACTIVE_DATA: {
+      const { data } = action.payload;
+      return {
+        ...state,
+        activeInfusion: [data],
+        fetchingInfusionStarted: false,
+        fetchingInfusionResolved: true,
+        fetchingInfusionError: null
+      };
+    }
+    case actionTypes.FETCHING_INFUSION_REJECTED: {
       const { message } = action.payload; // Error message.
       return {
         ...state,
         fetchingInfusionStarted: false,
         fetchingInfusionResolved: false,
-        fetchingInfusionError: message,
+        fetchingInfusionError: message
       };
     }
     case actionTypes.STOP_ASYNC_FETCHING_INFUSION: {
@@ -41,7 +54,7 @@ export default (state = initialState, action) => {
         ...state,
         fetchingInfusionStarted: false,
         fetchingInfusionResolved: false,
-        fetchingInfusionError: null,
+        fetchingInfusionError: null
       };
     }
     default: {

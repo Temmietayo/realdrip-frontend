@@ -1,43 +1,68 @@
 import React, { Component } from "react";
-import { getActiveInfusion, getActiveNurses, getActiveDevice} from '../../../actions/dashboardActions';
-import { stopAsyncProcess } from '../../../actions/asyncProcess';
-import * as asyncProcess from '../../../actions/asyncProcess';
 import View from "./View";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getInfusion } from "../../../actions/infusionActions";
+import { withRouter } from "react-router-dom";
+import { stopAsyncProcess } from "../../../actions/commonActions";
+import * as asyncProcess from "../../../actions/asyncProcess";
 
-class Dashboard extends Component {
+class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeInfusion: 6,
-      activeNurses: 4,
       textNotice: "Urgent",
       operationReading: "14",
-      operationStatus: "almost complete"
+      operationStatus: "almost complete",
     };
+
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange = event => {
     this.setState({ operationReading: event.target.value });
   };
 
+  componentWillMount = () => {
+    this.props.dispatch(getInfusion);
+  };
+
   render() {
     return (
       <View
+        dispatch={this.props.dispatch}
+        fetchingInfusionStarted={this.props.fetchingInfusionStarted}
         handleChange={this.handleChange}
         operationReading={this.state.operationReading}
-        fetchingDeviceStarted={this.props.fetchingDeviceStarted}
-        fetchingInfusionStarted={this.props.fetchingInfusionStarted}
-        fetchingNursesStarted={this.props.fetchingNursesStarted}
-        fetchingDeviceResolved={this.props.fetchingDeviceResolved}
-        fetchingInfusionResolved={this.props.fetchingInfusionResolved}
-        fetchingNursesResolved={this.props.fetchingNursesResolved}
         operationStatus={this.state.operationStatus}
-        activeInfusion={this.state.activeInfusion}
-        activeNurses={this.state.activeNurses}
+        activeInfusion={this.props.activeInfusion}
+        activeDevice={this.props.activeDevice}
         textNotice={this.state.textNotice}
       />
     );
   }
 }
 
-export default Dashboard;
+Dashboard.defaultProps = {
+  activeDevice: [],
+  activeInfusion: [],
+  fetchingInfusionStarted: false,
+  fetchingInfusionResolved: false,
+  dispatch: () => {}
+};
+
+Dashboard.propTypes = {
+  activeInfusion: PropTypes.array,
+  activeDevice: PropTypes.array,
+  fetchingInfusionStarted: PropTypes.bool,
+  fetchingInfusionResolved: PropTypes.bool,
+  dispatch: PropTypes.func
+};
+
+export default withRouter(
+  connect(state => ({
+    activeInfusion: state.activeInfusion,
+    activeDevice: state.activeDevice,
+    fetchingInfusionStarted: state.fetchingInfusionStarted,
+    fetchingInfusionResolved: state.fetchingInfusionStarted
+  }))(Dashboard)
+);

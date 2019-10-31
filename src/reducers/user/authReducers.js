@@ -1,10 +1,10 @@
-import * as actionTypes from '../../actions/actionTypes';
+import * as actionTypes from "../../actions/actionTypes";
 
 const initialState = {
   user: null,
   loggingUserStarted: false,
   loggingUserResolved: false,
-  loggingUserError: null,
+  loggingUserError: null
 };
 
 export default (state = initialState, action) => {
@@ -12,9 +12,10 @@ export default (state = initialState, action) => {
     case actionTypes.LOGGING_USER_STARTED: {
       return {
         ...state,
+        user: null,
         loggingUserStarted: true,
         loggingUserResolved: false,
-        loggingUserError: null,
+        loggingUserError: null
       };
     }
     case actionTypes.LOGGING_USER_RESOLVED: {
@@ -24,7 +25,7 @@ export default (state = initialState, action) => {
         user: data,
         loggingUserStarted: false,
         loggingUserResolved: true,
-        loggingUserError: null,
+        loggingUserError: null
       };
     }
     case actionTypes.LOGGING_USER_REJECTED: {
@@ -33,7 +34,7 @@ export default (state = initialState, action) => {
         ...state,
         loggingUserStarted: false,
         loggingUserResolved: false,
-        loggingUserError: message,
+        loggingUserError: message
       };
     }
     case actionTypes.LOG_OUT: {
@@ -41,14 +42,14 @@ export default (state = initialState, action) => {
         user: null,
         loggingUserStarted: false,
         loggingUserResolved: false,
-        loggingUserError: null,
+        loggingUserError: null
       };
     }
     case actionTypes.STOP_ASYNC_LOGGING_USER: {
       return {
         ...state,
         loggingUserStarted: false,
-        loggingUserError: null,
+        loggingUserError: null
       };
     }
     default:

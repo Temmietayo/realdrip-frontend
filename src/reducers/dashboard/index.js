@@ -1,5 +1,3 @@
-import fetchDeviceReducer from "./fetchDeviceReducer";
-import fetchInfusionReducer from "./fetchInfusionReducer";
-import fetchNursesReducer from "./fetchNursesReducer";
+import dashboardReducer from "./dashboardReducer";
 
-export { fetchDeviceReducer, fetchInfusionReducer, fetchNursesReducer };
+export default { dashboardReducer };

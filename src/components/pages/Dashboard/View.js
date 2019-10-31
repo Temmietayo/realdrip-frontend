@@ -118,7 +118,10 @@ const View = props => {
             <div className="device-in-use col-5-dash">
               <div className="column-dash nowrap border-bottom">
                 <span className="row-dash align-items-center justify-content-space-between nowrap">
-                  <p className="strong text-45 pad-15"> 02 </p>
+                  <p className="strong text-45 pad-15">
+                    {" "}
+                    {props.activeDevice.length}{" "}
+                  </p>
                   <img className="small-icon pad-15" src={nureseIcon} alt="" />
                 </span>
                 <span className="row-dash nowrap justify-content-space-between">
@@ -150,7 +153,7 @@ const View = props => {
               <p className="header-3">Active Infusion</p>
             </div>
             <section className="active-infusion">
-              <div class="tbl-header">
+              <div className="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
                     <tr>

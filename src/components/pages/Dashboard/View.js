@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/css/dashboard.css";
 import PropTypes from "prop-types";
 import nureseIcon from "../../assets/img/nurse-1.svg";
+import { Link } from "react-router-dom";
 
 const View = props => {
   let urgentCard = {
@@ -82,8 +83,7 @@ const View = props => {
                 <div className="column-dash card nowrap card-view-small">
                   <span className="row-dash align-items-center justify-content-space-between nowrap">
                     <p className="strong text-45 pad-15">
-                      {" "}
-                      {props.activeInfusion}{" "}
+                      {props.activeInfusion}
                     </p>
                     <img
                       className="small-icon pad-15"
@@ -100,8 +100,7 @@ const View = props => {
                 <div className="column-dash card nowrap card-view-small">
                   <span className="row-dash align-items-center justify-content-space-between nowrap">
                     <p className="strong text-45 pad-15">
-                      {" "}
-                      {props.activeNurses}{" "}
+                      {props.activeNurses}
                     </p>
                     <img
                       className="small-icon pad-15"
@@ -118,10 +117,7 @@ const View = props => {
             <div className="device-in-use col-5-dash">
               <div className="column-dash nowrap border-bottom">
                 <span className="row-dash align-items-center justify-content-space-between nowrap">
-                  <p className="strong text-45 pad-15">
-                    {" "}
-                    {props.activeDevice.length}{" "}
-                  </p>
+                  <p className="strong text-45 pad-15">{props.activeDevice}</p>
                   <img className="small-icon pad-15" src={nureseIcon} alt="" />
                 </span>
                 <span className="row-dash nowrap justify-content-space-between">
@@ -169,54 +165,25 @@ const View = props => {
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <tbody>
-                    <tr>
-                      <td>
-                        <span>
-                          89% <p className="red-timeline"></p>
-                          <p>Blood</p>
-                        </span>
-                      </td>
-                      <td>12:23 pm</td>
-                      <td>28 ml/hr</td>
-                      <td>Titilayo Olaide</td>
-                      <td>Taofeek/Malaria</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span>
-                          13% <p className="green-timeline"></p>
-                          <p>Saline</p>
-                        </span>
-                      </td>
-                      <td>12:23 pm</td>
-                      <td>28 ml/hr</td>
-                      <td>Titilayo Olaide</td>
-                      <td>Taofeek/Malaria</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span>
-                          89% <p className="red-timeline"></p>
-                          <p>Blood</p>
-                        </span>
-                      </td>
-                      <td>12:23 pm</td>
-                      <td>28 ml/hr</td>
-                      <td>Titilayo Olaide</td>
-                      <td>Taofeek/Malaria</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span>
-                          13% <p className="green-timeline"></p>
-                          <p>Saline</p>
-                        </span>
-                      </td>
-                      <td>12:23 pm</td>
-                      <td>28 ml/hr</td>
-                      <td>Titilayo Olaide</td>
-                      <td>Taofeek/Malaria</td>
-                    </tr>
+                    {props.infusions &&
+                      props.infusions.map(i => {
+                        return (
+                          <Link to={`/activeInfusion/${i._id}`}>
+                            <tr>
+                              <td>
+                                <span>
+                                  89% <p className="red-timeline"></p>
+                                  <p>Blood</p>
+                                </span>
+                              </td>
+                              <td>12:23 pm</td>
+                              <td>28 ml/hr</td>
+                              <td>{i.patientName}</td>
+                              <td>Malaria</td>
+                            </tr>
+                          </Link>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>

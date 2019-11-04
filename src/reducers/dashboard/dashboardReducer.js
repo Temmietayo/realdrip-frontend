@@ -2,9 +2,6 @@ import * as actionTypes from "../../actions/actionTypes";
 
 const initialState = {
   InfusionData: {},
-  activeInfusion: [],
-  activeDevice: [],
-  activeNurse: [],
   fetchingInfusionStarted: false,
   fetchingInfusionResolved: false,
   fetchingInfusionError: null
@@ -16,9 +13,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         InfusionData: {},
-        activeInfusion: [],
-        activeDevice: [],
-        activeNurse: [],
         fetchingInfusionStarted: true,
         fetchingInfusionResolved: false,
         fetchingInfusionError: null
@@ -29,21 +23,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         InfusionData: { data },
-        activeInfusion: [],
-        activeDevice: [],
-        activeNurse: [],
-        fetchingInfusionStarted: false,
-        fetchingInfusionResolved: true,
-        fetchingInfusionError: null
-      };
-    }
-    case actionTypes.UPDATE_ACTIVE_DATA: {
-      const { data } = action.payload;
-      return {
-        ...state,
-        activeInfusion: [data],
-        activeDevice: [data],
-        activeNurse: [data],
         fetchingInfusionStarted: false,
         fetchingInfusionResolved: true,
         fetchingInfusionError: null
@@ -71,7 +50,3 @@ export default (state = initialState, action) => {
     }
   }
 };
-
-export const activeInfusion = state => state.activeInfusion;
-export const activeDevice = state => state.activeDevice;
-export const activeNurse = state => state.activeNurse;

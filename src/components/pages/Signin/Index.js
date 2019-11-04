@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { loginUser } from "../../../actions/authActions";
-import { stopAsyncProcess } from "../../../actions/commonActions";
-import * as asyncProcess from "../../../actions/asyncProcess";
 import { validateSigninInputs } from "../../../helpers/inputValidators";
 import View from "./View";
+import axios from "axios";
 
 // connect(store => ({
 
@@ -16,18 +14,39 @@ class Signin extends Component {
   constructor() {
     super();
     this.state = {
-      wardusername: null,
+      wardemail: null,
       wardpassword: null,
       inputErrors: {
-        wardusernameError: null,
+        wardemailError: null,
         wardpasswordError: null
-      }
+      },
+      loggedIn: false
     };
   }
 
-  componentWillUnmount() {
-    this.props.dispatch(stopAsyncProcess(asyncProcess.LOGGING_USER));
-  }
+  loginUser = userDetails => {
+    const apiBaseUrl = "https://rd-backend-staging.herokuapp.com/api";
+
+    return axios
+      .post(`${apiBaseUrl}/users/login`, userDetails)
+      .then(response => {
+        if (response.status === 200) {
+          let token = response.data.data.token;
+          localStorage.setItem("rd-reg-token", token);
+          localStorage.setItem("rd-isLoggedIn", true);
+          this.setState({
+            loggedIn: true
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err.response);
+        if (err.response && err.response.status === 400) {
+          alert("incorrect login details");
+        }
+        return null;
+      });
+  };
 
   /**
    * Stores the user inputs in the state of this component.
@@ -45,8 +64,7 @@ class Signin extends Component {
    */
   handleSubmit = event => {
     event.preventDefault();
-    this.props.dispatch(stopAsyncProcess(asyncProcess.LOGGING_USER));
-    const { wardusername, wardpassword } = this.state;
+    const { wardemail, wardpassword } = this.state;
     const inputErrors = validateSigninInputs(this.state);
     if (inputErrors.errorFound) {
       const state = { ...this.state };
@@ -54,21 +72,25 @@ class Signin extends Component {
       this.setState(state);
     } else {
       this.clearInputErrors();
-      this.props.dispatch(loginUser({ wardusername, wardpassword }));
+      this.loginUser({
+        email: wardemail,
+        password: wardpassword,
+        userType: "hospital_admin"
+      });
     }
   };
 
   clearInputErrors = () => {
     const state = { ...this.state };
     state.inputErrors = {
-      wardusernameError: null,
+      wardemailError: null,
       wardpasswordError: null
     };
     this.setState(state);
   };
 
   render() {
-    if (this.props.loggingUserResolved) {
+    if (this.state.loggedIn) {
       return <Redirect to="/dashboard" />;
     }
     return (

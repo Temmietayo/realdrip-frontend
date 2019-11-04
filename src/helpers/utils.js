@@ -16,6 +16,13 @@ export const isNotEmpty = input => {
 };
 
 /**
+ * Ensures that an email string is in the correct format.
+ * @param {String} input The email string to verify.
+ * @returns {Boolean} Truthy value to tell if the check is successsful or not.
+ */
+export const isEmail = input => /^.+?@.+?\..+$/.test(input);
+
+/**
  * Ensures that a string is of a minimum length.
  * @param {String} input The string to verify.
  * @param {Number} minCharCount The minimum length.

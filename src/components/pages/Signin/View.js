@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../assets/css/signin.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import signin from "./../../assets/img/signin-2.svg";
 import LoadingIcon from "../../common/LoadingAnimation/Index";
@@ -26,15 +26,15 @@ const View = props => {
             <form className="sign-form" onSubmit={props.handleSubmit}>
               <div className="form-div">
                 <div className="form-group">
-                  <label htmlFor="wardusername">Ward Username</label>
+                  <label htmlFor="wardemail">Ward Email</label>
                   <input
-                    type="text"
-                    id="wardusername"
-                    name="wardusername"
+                    type="email"
+                    id="wardemail"
+                    name="wardemail"
                     onChange={props.handleChange}
                   />
                 </div>
-                <SmallAlert message={props.inputErrors.wardusernameError} />
+                <SmallAlert message={props.inputErrors.wardemailError} />
                 <div className="form-group">
                   <label htmlFor="wardpassword">Password</label>
                   <input
@@ -47,7 +47,7 @@ const View = props => {
                 <SmallAlert message={props.inputErrors.wardpasswordError} />
               </div>
               <button type="submit" disabled={props.loggingUserStarted}>
-                <Link to="/dashboard"> Sign In </Link>
+                Sign In
               </button>
             </form>
           </div>
